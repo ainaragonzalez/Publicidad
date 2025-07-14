@@ -49,7 +49,7 @@ h1 {
 }
 
 .ramo.aprobado {
-  background-color: #ff99ac; /* Color un poco más oscuro cuando está tachado */
+  background-color: #fd748e; /* Color un poco más oscuro cuando está tachado */
   text-decoration: line-through;
   opacity: 0.85;
 }
