@@ -40,7 +40,17 @@ const ramos = {
 };
 
 const mallaDiv = document.getElementById("malla");
-const estado = {}; // guarda qué ramos están aprobados
+let estado = {}; // almacena el progreso
+
+// Recuperar progreso desde localStorage si existe
+if (localStorage.getItem("estadoRamos")) {
+  estado = JSON.parse(localStorage.getItem("estadoRamos"));
+} else {
+  // Inicializar en falso
+  for (const ramo in ramos) {
+    estado[ramo] = false;
+  }
+}
 
 // Crear los cuadros
 for (const ramo in ramos) {
@@ -50,20 +60,29 @@ for (const ramo in ramos) {
   div.dataset.nombre = ramo;
   div.addEventListener("click", () => aprobarRamo(ramo));
   mallaDiv.appendChild(div);
-  estado[ramo] = false; // al principio todo bloqueado
+
+  // Marcar como aprobado si estaba guardado
+  if (estado[ramo]) {
+    div.classList.add("aprobado");
+  }
 }
 
-// Inicialmente desbloquear los que no tienen prerequisitos
-for (const ramo in ramos) {
-  let bloqueado = false;
-  for (const prereqs in ramos) {
-    if (ramos[prereqs].includes(ramo)) {
-      bloqueado = true;
-      break;
+// Desbloquear ramos según estado
+function actualizarDesbloqueados() {
+  for (const ramo in ramos) {
+    const div = document.querySelector(`[data-nombre="${ramo}"]`);
+    let bloqueado = false;
+    for (const prereqs in ramos) {
+      if (ramos[prereqs].includes(ramo) && !estado[prereqs]) {
+        bloqueado = true;
+        break;
+      }
     }
-  }
-  if (!bloqueado) {
-    document.querySelector(`[data-nombre="${ramo}"]`).classList.add("desbloqueado");
+    if (!bloqueado) {
+      div.classList.add("desbloqueado");
+    } else {
+      div.classList.remove("desbloqueado");
+    }
   }
 }
 
@@ -74,12 +93,12 @@ function aprobarRamo(ramo) {
   div.classList.add("aprobado");
   estado[ramo] = true;
 
-  // Desbloquear los ramos dependientes
-  ramos[ramo].forEach(dep => {
-    const depDiv = document.querySelector(`[data-nombre="${dep}"]`);
-    if (!depDiv.classList.contains("desbloqueado")) {
-      depDiv.classList.add("desbloqueado");
-    }
-  });
+  // Guardar en localStorage
+  localStorage.setItem("estadoRamos", JSON.stringify(estado));
+
+  // Desbloquear siguientes
+  actualizarDesbloqueados();
 }
 
+// Inicializar desbloqueos al cargar
+actualizarDesbloqueados();
