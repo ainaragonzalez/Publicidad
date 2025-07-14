@@ -1,5 +1,5 @@
 body {
-  background: linear-gradient(135deg, #ffd6e7, #ffe6f0);
+  background-color: #ffe6f0;
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 20px;
@@ -34,7 +34,7 @@ h1 {
 }
 
 .ramo {
-  background: linear-gradient(145deg, #ff80ab, #ffb3c6);
+  background-color: #ff80ab;
   border-radius: 8px;
   padding: 10px;
   margin: 5px 0;
@@ -52,7 +52,7 @@ h1 {
 }
 
 .ramo.aprobado {
-  background: #ff77a9;
+  background-color: #ff77a9;
   text-decoration: line-through;
   opacity: 0.8;
 }
