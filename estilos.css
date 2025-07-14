@@ -1,37 +1,49 @@
-/* estilos.css con estilo 3D y rosa */
-
 body {
   background: linear-gradient(135deg, #ffd6e7, #ffe6f0);
   font-family: 'Segoe UI', sans-serif;
+  margin: 0;
   padding: 20px;
-  color: #333;
 }
 
 h1 {
   text-align: center;
-  color: #d81b60;
+  color: #e91e63;
 }
 
-#malla {
+#container {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 20px;
+  flex-wrap: wrap;
   margin-top: 20px;
+}
+
+.columna {
+  border: 3px solid #ff80ab;
+  border-radius: 10px;
+  padding: 10px;
+  width: 250px;
+  background: #fff0f6;
+  box-shadow: 6px 6px 15px rgba(0,0,0,0.15), -6px -6px 15px rgba(255,255,255,0.5);
+}
+
+.columna h2 {
+  text-align: center;
+  color: #ff4081;
+  margin-top: 0;
 }
 
 .ramo {
   background: linear-gradient(145deg, #ff80ab, #ffb3c6);
-  border: none;
-  border-radius: 12px;
-  padding: 15px;
-  width: 220px;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 5px 0;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
   color: white;
   font-weight: bold;
   box-shadow: 6px 6px 15px rgba(0,0,0,0.2), -6px -6px 15px rgba(255,255,255,0.5);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .ramo:hover {
@@ -40,14 +52,12 @@ h1 {
 }
 
 .ramo.aprobado {
-  background: #ce93d8;
+  background: #ff77a9;
   text-decoration: line-through;
-  box-shadow: inset 4px 4px 10px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(255,255,255,0.5);
+  opacity: 0.8;
 }
 
 .ramo.bloqueado {
   opacity: 0.4;
   pointer-events: none;
 }
-
-
