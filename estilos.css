@@ -49,13 +49,13 @@ h1 {
 }
 
 .ramo.aprobado {
-  background-color: #ffb3c6;
+  background-color: #ff99ac; /* Color un poco más oscuro cuando está tachado */
   text-decoration: line-through;
-  opacity: 0.7;
+  opacity: 0.85;
 }
 
 .ramo.bloqueado {
-  background-color: #e0e0e0;
-  color: #999;
+  background-color: #f0f0f0; /* Gris clarito más evidente */
+  color: #aaa;
   cursor: default;
 }
