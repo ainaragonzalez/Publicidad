@@ -3,15 +3,20 @@ const dependencias = {
   "Opinión Pública": ["Introducción a la Comunicación"],
   "Creación Publicitaria II": ["Teoria y Tecnicas Publicitarias I", "Creación Publicitaria I"],
   "Teoría y Técnicas Publicitarias II": ["Teoria y Tecnicas Publicitarias I", "Creación Publicitaria II"],
-  "Comunicación Profesional": ["Informatica", "Semiotica", "Creación Publicitaria II"],
+  "Comunicación Profesional": ["Informatica", "Semiótica", "Creación Publicitaria II"],
   "Estrategia de Medios": ["Teoría y Técnicas Publicitarias II", "Taller Audiovisual"],
   "Planificación de Campañas Publicitarias": ["Taller Gráfico", "Taller de Radio", "Comunicación Profesional", "Taller Audiovisual", "Estrategia de Medios", "Sistema de Investigación de Mercados"],
   "Seminario": ["Planificación de Campañas Publicitarias", "Comunicación Profesional", "Sistema de Investigación de Mercados", "Estrategia de Medios", "Comunicación Institucional", "Estrategia Competitiva"],
   "Sistema de Investigación de Mercados": ["Inglés Técnico"],
-  "Comunicación Institucional": ["Semiotica", "Inglés Técnico"],
+  "Comunicación Institucional": ["Semiótica", "Inglés Técnico"],
   "Estrategia de Producto": ["Sistema de Investigación de Mercados"],
   "Recursos Humanos": ["Sociología", "Psicóloga Social"],
-  "Tecnología de la Información": ["Tecnología Gráfica", "Tecnología Radial", "Tecnología Audiovisual"]
+  "Tecnología de la Información": ["Tecnología Gráfica", "Tecnología Radial", "Tecnología Audiovisual"],
+  "Comportamiento del Consumidor": ["Sociología"],
+  "Estrategia Competitiva": ["Marketing"],
+  "Historia del Arte y del Diseño II": ["Historia del Arte y del Diseño I"],
+  "Taller de Radio": ["Tecnología Radial"],
+  "Taller Audiovisual": ["Tecnología Audiovisual"]
 };
 
 const estado = localStorage.getItem("estadoRamos") ? JSON.parse(localStorage.getItem("estadoRamos")) : {};
