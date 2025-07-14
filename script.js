@@ -7,7 +7,7 @@ const ramos = {
   "Creación Publicitaria I": ["Creación Publicitaria II"],
   "Taller de Texto": ["Semiótica"],
   "Historia del Arte y del Diseño I": ["Historia del Arte y del Diseño II"],
-  "Tecnología Gráfica": ["Taller Gráfico", "Tecnología de la Información"],
+  "Tecnología Gráfica": ["Taller Grafico", "Tecnología de la Información"],
   "Creación Publicitaria II": ["Teoria y Tecnicas Publicitarias II", "Comunicación Profesional"],
   "Informatica": ["Comunicación Profesional"],
   "Historia del Arte y del Diseño II": [],
@@ -40,13 +40,12 @@ const ramos = {
 };
 
 const mallaDiv = document.getElementById("malla");
-let estado = {}; // almacena el progreso
+let estado = {}; // Guarda el estado de cada ramo
 
-// Recuperar progreso desde localStorage si existe
+// Recuperar del localStorage si existe
 if (localStorage.getItem("estadoRamos")) {
   estado = JSON.parse(localStorage.getItem("estadoRamos"));
 } else {
-  // Inicializar en falso
   for (const ramo in ramos) {
     estado[ramo] = false;
   }
@@ -58,16 +57,11 @@ for (const ramo in ramos) {
   div.className = "ramo";
   div.textContent = ramo;
   div.dataset.nombre = ramo;
-  div.addEventListener("click", () => aprobarRamo(ramo));
+  div.addEventListener("click", () => toggleRamo(ramo));
   mallaDiv.appendChild(div);
-
-  // Marcar como aprobado si estaba guardado
-  if (estado[ramo]) {
-    div.classList.add("aprobado");
-  }
 }
 
-// Desbloquear ramos según estado
+// Actualizar desbloqueos
 function actualizarDesbloqueados() {
   for (const ramo in ramos) {
     const div = document.querySelector(`[data-nombre="${ramo}"]`);
@@ -83,22 +77,29 @@ function actualizarDesbloqueados() {
     } else {
       div.classList.remove("desbloqueado");
     }
+
+    // Visual
+    if (estado[ramo]) {
+      div.classList.add("aprobado");
+    } else {
+      div.classList.remove("aprobado");
+    }
   }
 }
 
-function aprobarRamo(ramo) {
+// Alternar aprobar/desaprobar
+function toggleRamo(ramo) {
   const div = document.querySelector(`[data-nombre="${ramo}"]`);
-  if (!div.classList.contains("desbloqueado") || estado[ramo]) return;
+  if (!div.classList.contains("desbloqueado") && !estado[ramo]) return;
 
-  div.classList.add("aprobado");
-  estado[ramo] = true;
+  estado[ramo] = !estado[ramo]; // Cambiar estado
 
-  // Guardar en localStorage
+  // Guardar
   localStorage.setItem("estadoRamos", JSON.stringify(estado));
 
-  // Desbloquear siguientes
+  // Actualizar desbloqueos y visual
   actualizarDesbloqueados();
 }
 
-// Inicializar desbloqueos al cargar
+// Inicial
 actualizarDesbloqueados();
