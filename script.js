@@ -16,7 +16,9 @@ const dependencias = {
   "Estrategia Competitiva": ["Marketing"],
   "Historia del Arte y del Diseño II": ["Historia del Arte y del Diseño I"],
   "Taller de Radio": ["Tecnología Radial"],
-  "Taller Audiovisual": ["Tecnología Audiovisual"]
+  "Taller Audiovisual": ["Tecnología Audiovisual"],
+  "Taller Gráfico": ["Tecnología Gráfica"],
+  "Técnicas de Negociación": ["Psicóloga Social"]
 };
 
 const estado = localStorage.getItem("estadoRamos") ? JSON.parse(localStorage.getItem("estadoRamos")) : {};
